@@ -13,7 +13,7 @@ const props = defineProps({
 })
 const foo = useFoo()
 onBeforeMount(() => {
-  $api.login()
+  $api.getSession()
 })
 onMounted(() => {
 

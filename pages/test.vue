@@ -7,23 +7,18 @@
 
 <script setup lang="ts">
 const { $api } = useNuxtApp()
-const message = ref('')
-const list: Ref<Array<any>> = ref([])
-const getSession = () => {
-  $api.getSession()
-    .then(res => {
-
-    })
-    .catch(err => {
-      console.error(err)
-      message.value = 'hello world'
-      list.value = [{}, {}]
-    })
+let message = ''
+let list: Array<any> = []
+const getSession = async () => {
+  try {
+    const res = await $api.getSession()
+  } catch (err) {
+    console.error(err)
+    message = 'hello world'
+    list = [{}, {}]
+  }
 }
-if (process.server) {
-  getSession()
-}
-// getSession()
+await getSession()
 </script>
 
 <style lang="scss" scoped>
