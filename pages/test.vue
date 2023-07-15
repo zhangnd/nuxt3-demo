@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div>{{ message }}</div>
     <div>{{ list.length }}</div>
   </div>
@@ -22,8 +22,5 @@ await getSession()
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-}
+
 </style>

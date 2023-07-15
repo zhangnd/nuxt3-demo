@@ -12,8 +12,24 @@ const props = defineProps({
 
 })
 const foo = useFoo()
+const getSession = async () => {
+  try {
+    await $api.getSession()
+  } catch (err) {
+    console.error(err)
+  }
+}
+await getSession()
 onBeforeMount(() => {
-  $api.getSession()
+  import('jswx').then(module => {
+    const wx = module.default
+    wx.config({
+      debug: true
+    })
+    wx.ready(() => {
+      console.log('wx ready!')
+    })
+  })
 })
 onMounted(() => {
 

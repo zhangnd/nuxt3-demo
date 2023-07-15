@@ -46,14 +46,14 @@ export default defineNuxtConfig({
   },
   css: [
     '@/assets/css/global.scss',
-    '@/assets/css/iconfont.scss',
-    '@/assets/css/element-plus.scss'
+    '@/assets/css/iconfont.scss'
   ],
   components: [
     { path: '@/components' }
   ],
   modules: [
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@element-plus/nuxt'
   ],
   vite: {
     build: {

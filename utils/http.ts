@@ -1,6 +1,4 @@
-import { ElMessage } from 'element-plus'
-
-const fetch = (url: string, options?: any): Promise<any> => {
+const fetch = async (url: string, options?: any): Promise<any> => {
   const { public: { proxy } } = useRuntimeConfig()
   const { host } = useRequestURL()
   let baseURL
@@ -15,42 +13,37 @@ const fetch = (url: string, options?: any): Promise<any> => {
   }
   options.baseURL = baseURL
   options.retry = 0
-  return new Promise<any>((resolve, reject) => {
-    useAsyncData(url, () =>
-      useRequestFetch()(url, options)
-        .then((res: any) => {
-          resolve(res)
-        })
-        .catch(err => {
-          if (process.server) {
-            reject(err)
-          } else {
-            const { statusCode = 500, statusMessage } = err
-            let message
-            switch (statusCode) {
-            case 405:
-              message = '405 Method Not Allowed'
-              break
-            case 500:
-              message = '500 Internal Server Error'
-              break
-            case 503:
-              message = '503 Service Unavailable'
-              break
-            default:
-              message = `${statusCode} ${statusMessage}`
-            }
-            ElMessage.closeAll()
-            ElMessage({
-              message,
-              type: 'error',
-              duration: 2000
-            })
-            reject(message)
-          }
-        })
-    )
-  })
+  const { data, error } = await useAsyncData(url, () => useRequestFetch()(url, options))
+  const res: any = data.value
+  const err: any = error.value
+  if (err) {
+    let { message } = err
+    if (process.server) {
+      return Promise.reject(message)
+    } else {
+      const { statusCode = 500 } = err
+      switch (statusCode) {
+      case 405:
+        message = '405 Method Not Allowed'
+        break
+      case 500:
+        message = '500 Internal Server Error'
+        break
+      case 503:
+        message = '503 Service Unavailable'
+        break
+      }
+      ElMessage.closeAll()
+      ElMessage({
+        message,
+        type: 'error',
+        duration: 2000
+      })
+      return Promise.reject(message)
+    }
+  } else {
+    return Promise.resolve(res)
+  }
 }
 
 export default new class Http {
