@@ -23,6 +23,9 @@ const fetch = async (url: string, options?: any): Promise<any> => {
     } else {
       const { statusCode = 500 } = err
       switch (statusCode) {
+      case 404:
+        message = '404 Not Found'
+        break
       case 405:
         message = '405 Method Not Allowed'
         break
