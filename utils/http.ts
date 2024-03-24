@@ -21,20 +21,24 @@ const fetch = async (url: string, options?: any): Promise<any> => {
     if (process.server) {
       return Promise.reject(message)
     } else {
-      const { statusCode = 500 } = err
-      switch (statusCode) {
-      case 404:
-        message = '404 Not Found'
-        break
-      case 405:
-        message = '405 Method Not Allowed'
-        break
-      case 500:
-        message = '500 Internal Server Error'
-        break
-      case 503:
-        message = '503 Service Unavailable'
-        break
+      if (message?.includes('message timeout')) {
+        message = '请求超时'
+      } else {
+        const { statusCode = 500 } = err
+        switch (statusCode) {
+        case 404:
+          message = '404 Not Found'
+          break
+        case 405:
+          message = '405 Method Not Allowed'
+          break
+        case 500:
+          message = '500 Internal Server Error'
+          break
+        case 503:
+          message = '503 Service Unavailable'
+          break
+        }
       }
       ElMessage.closeAll()
       ElMessage({

@@ -1,5 +1,7 @@
-export const formatTime = (time: number, fmt: string) => {
-  if (!time) return
+export const formatTime = (time: number, fmt = 'yyyy-MM-dd hh:mm:ss') => {
+  if (typeof time !== 'number') {
+    return ''
+  }
   const date = new Date(time)
   const o: {
     [key: string]: number
@@ -12,9 +14,10 @@ export const formatTime = (time: number, fmt: string) => {
     's+': date.getSeconds()
   }
   Object.keys(o).forEach((key: string) => {
-    if (new RegExp(`(${key})`).test(fmt)) {
+    const reg: any = new RegExp(`(${key})`)
+    if (reg.test(fmt)) {
       const value: any = o[key]
-      fmt = fmt.replace(RegExp.$1, value < 10 ? `0${value}` : value)
+      fmt = fmt.replace(reg.exec(fmt)[1], value < 10 ? `0${value}` : value)
     }
   })
   return fmt

@@ -1,29 +1,27 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt dev",
-    "build": "nuxt build",
-    "start": "node .output/server/index.mjs",
-    "preview": "nuxt preview",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
     "generate": "nuxt generate",
-    "postinstall": "nuxt prepare"
+    "start": "node .output/server/index.mjs",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@types/node": "^20.4.2",
-    "@vueuse/nuxt": "^10.2.1",
-    "element-plus": "^2.3.8",
+    "@element-plus/nuxt": "^1.0.7",
+    "@vueuse/nuxt": "^10.9.0",
+    "element-plus": "^2.6.2",
     "jswx": "^1.6.0",
-    "nuxt": "^3.6.3",
-    "sass": "^1.63.6",
-    "typescript": "^5.1.6",
+    "nuxt": "^3.11.1",
+    "sass": "^1.72.0",
+    "tooool": "^1.0.2",
+    "typescript": "^5.4.3",
     "vite-plugin-compression": "^0.5.1",
-    "vue-tsc": "^1.8.5"
+    "vue-tsc": "^1.8.27"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.5",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-nuxt": "^4.0.0"
+    "@nuxt/eslint": "^0.3.0-beta.3",
+    "eslint": "^8.57.0"
   }
 }

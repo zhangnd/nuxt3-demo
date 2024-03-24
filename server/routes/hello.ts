@@ -1,1 +1,3 @@
-export default defineEventHandler(() => 'Hello World!')
+export default defineEventHandler(() => {
+  return '<!DOCTYPE html><html><head><meta charset="utf-8"><title>hello</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"><style type="text/css">body { margin: 0; overflow: overlay; } ::-webkit-scrollbar { width: 6px; height: 6px; background-color: transparent; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar-thumb { background-color: rgba(144, 147, 153, 0.3); border-radius: 6px; }</style></head><body><div>Hello World!</div></body></html>'
+})

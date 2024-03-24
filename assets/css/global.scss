@@ -1,5 +1,6 @@
 body {
   background-color: #ffffff;
+  overflow: overlay;
 }
 
 body, h1, h2, h3, h4, h5, h6, p {
@@ -25,6 +26,10 @@ a {
 em {
   font-style: normal;
   color: #f73131;
+}
+
+img, canvas {
+  vertical-align: middle;
 }
 
 img[src=""],
@@ -53,4 +58,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   appearance: textfield;
   -moz-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }

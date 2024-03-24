@@ -1,6 +1,8 @@
 import viteCompression from 'vite-plugin-compression'
 
-const proxy = 'http://localhost:8088/api'
+const isDev = process.env.NODE_ENV === 'development'
+
+const proxy = 'http://localhost:8080/api'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -27,17 +29,22 @@ export default defineNuxtConfig({
       }
     }
   },
+  devtools: {
+    enabled: false
+  },
   app: {
-    cdnURL: '',
     head: {
       title: '',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { 'http-equiv': 'Cache-Control', content: 'no-cache, no-store, must-revalidate' }
+        { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover' },
+        { name: 'keywords', content: '' },
+        { hid: 'description', name: 'description', content: '' },
+        { name: 'referrer', content: isDev ? 'same-origin' : 'strict-origin-when-cross-origin' }
       ],
       link: [
-        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.png' }
+        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' }
       ],
       script: [
 
@@ -52,6 +59,7 @@ export default defineNuxtConfig({
     { path: '@/components' }
   ],
   modules: [
+    '@nuxt/eslint',
     '@vueuse/nuxt',
     '@element-plus/nuxt'
   ],
