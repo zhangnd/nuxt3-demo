@@ -2,9 +2,6 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   {
-    // https://zh-hans.eslint.org/docs/latest/rules
-    // https://eslint.vuejs.org/rules
-    // https://typescript-eslint.io/rules
     'rules': {
       'arrow-parens': 'off', // 箭头函数参数需要括号
       'block-spacing': 'error', // 在打开块之后和关闭块之前禁止或强制块内的空格
