@@ -37,8 +37,8 @@ export default defineNuxtConfig({
       title: '',
       meta: [
         { charset: 'utf-8' },
-        { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover' },
+        { 'http-equiv': 'x-ua-compatible', content: 'IE=edge,chrome=1' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'keywords', content: '' },
         { hid: 'description', name: 'description', content: '' },
         { name: 'referrer', content: isDev ? 'same-origin' : 'strict-origin-when-cross-origin' }
