@@ -38,7 +38,7 @@ export default withNuxt(
       'semi-spacing': 'error', // 在分号前后强制执行一致的间距
       'space-before-blocks': 'error', // 在块之前强制执行一致的间距
       'space-before-function-paren': ['error', {
-        'anonymous': 'always',
+        'anonymous': 'never',
         'named': 'never',
         'asyncArrow': 'always'
       }], // 在 function 定义左括号之前强制执行一致的间距

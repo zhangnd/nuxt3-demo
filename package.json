@@ -5,8 +5,7 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "generate": "nuxt generate",
-    "start": "node .output/server/index.mjs",
-    "lint": "eslint ."
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@element-plus/nuxt": "^1.0.8",
